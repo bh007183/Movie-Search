@@ -10,6 +10,73 @@ function specificDetails(id) {
   )
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
+      document.querySelector(".streemHeader").style.display = "block";
+      document.querySelector(".rentHeader").style.display = "block";
+      document.querySelector(".poster").style.display = "block";
+      let Title = document.querySelector(".header");
+      Title.textContent = data.title;
+      Title.style.textAlign = "center";
+      let poster = document.querySelector(".poster");
+      poster.src = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
+      let overview = document.querySelector(".overview");
+      overview.textContent = data.overview;
+      overview.style.textAlign = "center";
+      for (
+        let i = 0;
+        i < data["watch/providers"].results.US.flatrate.length;
+        i++
+      ) {
+        let subscript = document.querySelector(".subscribe");
+        let column = document.createElement("div");
+        column.classList.add("col");
+        column.classList.add("s12");
+        console.log(data["watch/providers"].results.US.flatrate[i]);
+        if (
+          data["watch/providers"].results.US.flatrate[i].provider_name ===
+          "undefined"
+        ) {
+          column.textContent = "No Known Streeming Service";
+        } else {
+          column.textContent =
+            data["watch/providers"].results.US.flatrate[i].provider_name;
+        }
+        column.style.textAlign = "center";
+        subscript.append(column);
+      }
+       try {
+        for (
+          let i = 0;
+          i < data["watch/providers"].results.US.rent.length;
+          i++
+        ) {
+          let rent = document.querySelector(".rent");
+          let rentColumn = document.createElement("div");
+          rentColumn.classList.add("col");
+          rentColumn.classList.add("s12");
+          console.log(data["watch/providers"].results.US.rent[i]);
+
+          rentColumn.textContent =
+            data["watch/providers"].results.US.rent[i].provider_name;
+
+          rentColumn.style.textAlign = "center";
+          rent.append(rentColumn);
+        }
+      }
+      catch(err){
+          
+            let rent = document.querySelector(".rent");
+            let rentColumn = document.createElement("div");
+            rentColumn.classList.add("col");
+            rentColumn.classList.add("s12");
+            rentColumn.textContent = "No Known Rental";
+            rentColumn.style.textAlign = "center";
+            rent.append(rentColumn)
+          
+          
+
+      }
+        
       
     });
 }
@@ -58,6 +125,7 @@ searchButton.addEventListener("click", function (event) {
           a.setAttribute("class", "specificButton");
           a.addEventListener("click", function (event) {
             specificDetails(event.target.value);
+            document.querySelector(".main").style.display = "none";
           });
           let atext = document.createTextNode(data.results[i].title);
           let ratingP = document.createElement("p");
@@ -80,7 +148,6 @@ searchButton.addEventListener("click", function (event) {
           btnCont.append(ratingP);
 
           a.append(atext);
-
           a.setAttribute("value", data.results[i].id);
         }
       }
