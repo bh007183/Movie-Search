@@ -1,6 +1,6 @@
 const searchButton = document.querySelector(".searchButton");
 const inputValue = document.querySelector("#input_text");
-
+let savedData;
 function specificDetails(id) {
   fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=dc7d76692b192b772ecce4d938dfa475&language=en-US&append_to_response=watch%2Fproviders`,
@@ -10,7 +10,16 @@ function specificDetails(id) {
   )
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      console.log(data)
+      savedData = {
+        title: data.title,
+        poster_path: `https://image.tmdb.org/t/p/w500${data.poster_path}`,
+        overview: data.overview,
+        vote_average: data.vote_average,
+        flatrate: JSON.stringify(data["watch/providers"].results.US.flatrate),
+        rent: JSON.stringify(data["watch/providers"].results.US.rent)
+      }
+
       document.querySelector(".streemHeader").style.display = "block";
       document.querySelector(".rentHeader").style.display = "block";
       document.querySelector(".poster").style.display = "block";
@@ -31,7 +40,7 @@ function specificDetails(id) {
         let column = document.createElement("div");
         column.classList.add("col");
         column.classList.add("s12");
-        console.log(data["watch/providers"].results.US.flatrate[i]);
+        
         if (
           data["watch/providers"].results.US.flatrate[i].provider_name ===
           "undefined"
@@ -54,7 +63,7 @@ function specificDetails(id) {
           let rentColumn = document.createElement("div");
           rentColumn.classList.add("col");
           rentColumn.classList.add("s12");
-          console.log(data["watch/providers"].results.US.rent[i]);
+          
 
           rentColumn.textContent =
             data["watch/providers"].results.US.rent[i].provider_name;
@@ -88,7 +97,7 @@ searchButton.addEventListener("click", function (event) {
     hide[i].style.display = "none";
   }
 
-  console.log(inputValue.value);
+  
   fetch(
     `https://api.themoviedb.org/3/search/movie?api_key=dc7d76692b192b772ecce4d938dfa475&language=en-US&query=%22${inputValue.value}%22&page=1&include_adult=false`,
     {
@@ -151,7 +160,20 @@ searchButton.addEventListener("click", function (event) {
           a.setAttribute("value", data.results[i].id);
         }
       }
-      console.log(data.results);
+      
     })
     .catch((err) => console.error(err));
 });
+
+let saveButton = document.querySelector(".saveMovie")
+
+saveButton.addEventListener("click", function(event){
+  console.log(savedData)
+  fetch("/api/savemovie", {
+    method: "post",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(savedData)
+  }).then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err))
+})
