@@ -16,8 +16,8 @@ let data = await db.Saved.find()
 res.json(data)
 })
 
-router.get("/api/savemovie/:_id", async (req, res) => {
-let data = await db.Saved.find({_id: mongojs.ObjectID(req.params._id)}, req.body)
+router.delete("/api/savemovie/:_id", async (req, res) => {
+let data = await db.Saved.deleteOne({_id: mongojs.ObjectID(req.params._id)}, req.body)
 .catch(err => console.log(err))
 console.log(data)
 res.json("success")

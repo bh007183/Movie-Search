@@ -1,3 +1,12 @@
-.test {
-    color: red
+*{
+    color: white;
+}
+.card {
+    background-color: rgb(22, 21, 21);
+}
+img{
+    width: 80vw
+}
+button{
+    background-color: rgb(66, 63, 63);
 }
