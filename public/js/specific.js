@@ -76,16 +76,28 @@ window.onload = function () {
         streemTitle.textContent = "Streeming Locations:"
         
         try {
-          for (let j = 0; j < parsedDataStreem.length; j++) {
-            
+          if(typeof(parsedDataStreem) === "string"){
             let streemSource = document.createElement("div");
             streemSource.classList.add("col");
             streemSource.classList.add("s12");
             streemSource.style.textAlign = "center"
-            streemSource.textContent = parsedDataStreem[j].provider_name
+            streemSource.textContent = "No Known Streeming Service"
             flatrateContainer.append(streemSource)
+          }else{
+            for (let j = 0; j < parsedDataStreem.length; j++) {
             
+                let streemSource = document.createElement("div");
+                streemSource.classList.add("col");
+                streemSource.classList.add("s12");
+                streemSource.style.textAlign = "center"
+                streemSource.textContent = parsedDataStreem[j].provider_name
+                flatrateContainer.append(streemSource)
+                
+              }
+
           }
+          
+          
         } catch (err) {
             
             let streemSource = document.createElement("div");
@@ -106,16 +118,29 @@ window.onload = function () {
         rentTitle.textContent = "Renting Locations:"
         
         try {
-          for (let x = 0; x < parsedDataRent.length; x++) {
+
+            if(typeof(parsedDataRent) === "string"){
+                let rentSource = document.createElement("div");
+                rentSource.classList.add("col");
+                rentSource.classList.add("s12");
+                rentSource.style.textAlign = "center"
+                rentSource.textContent = "No Known Renting Service"
+                rentContainer.append(rentSource)
+
+            }else{
+                for (let x = 0; x < parsedDataRent.length; x++) {
             
-            let rentSource = document.createElement("div");
-            rentSource.classList.add("col");
-            rentSource.classList.add("s12");
-            rentSource.style.textAlign = "center"
-            rentSource.textContent = parsedDataRent[x].provider_name
-            rentContainer.append(rentSource)
-            
-          }
+                    let rentSource = document.createElement("div");
+                    rentSource.classList.add("col");
+                    rentSource.classList.add("s12");
+                    rentSource.style.textAlign = "center"
+                    rentSource.textContent = parsedDataRent[x].provider_name
+                    rentContainer.append(rentSource)
+                    
+                  }
+
+            }
+          
         } catch (err) {
             
             let rentSource = document.createElement("div");

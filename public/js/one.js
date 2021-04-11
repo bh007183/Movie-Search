@@ -14,8 +14,8 @@ window.onload = function() {
             poster_path: `https://image.tmdb.org/t/p/w500${data.poster_path}`,
             overview: data.overview,
             vote_average: data.vote_average,
-            flatrate: JSON.stringify(data["watch/providers"].results.US.flatrate),
-            rent: JSON.stringify(data["watch/providers"].results.US.rent)
+            flatrate: JSON.stringify(data["watch/providers"].results.US.flatrate) || JSON.stringify("No Known Streeming Service"),
+            rent: JSON.stringify(data["watch/providers"].results.US.rent) || JSON.stringify("No Known Renting Service")
           }
     
           document.querySelector(".streemHeader").style.display = "block";
@@ -29,6 +29,7 @@ window.onload = function() {
           let overview = document.querySelector(".overview");
           overview.textContent = data.overview;
           overview.style.textAlign = "center";
+          try {
           for (
             let i = 0;
             i < data["watch/providers"].results.US.flatrate.length;
@@ -39,17 +40,22 @@ window.onload = function() {
             column.classList.add("col");
             column.classList.add("s12");
             
-            if (
-              data["watch/providers"].results.US.flatrate[i].provider_name ===
-              "undefined"
-            ) {
-              column.textContent = "No Known Streeming Service";
-            } else {
+            
               column.textContent =
                 data["watch/providers"].results.US.flatrate[i].provider_name;
-            }
+            
             column.style.textAlign = "center";
             subscript.append(column);
+          }
+        }catch(err){
+            let subscript = document.querySelector(".subscribe");
+            let column = document.createElement("div");
+            column.classList.add("col");
+            column.classList.add("s12");
+            column.textContent = "No Known Streeming"
+            column.style.textAlign = "center";
+            subscript.append(column);
+
           }
            try {
             for (
