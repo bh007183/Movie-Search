@@ -7,12 +7,78 @@ function specificDetails(id) {
   
 }
 
+fetch(
+  'https://api.themoviedb.org/3/trending/movie/day?api_key=dc7d76692b192b772ecce4d938dfa475',
+  {
+    method: "GET",
+  }
+).then((res) => res.json())
+.then(data => localStorage.setItem("Featured", JSON.stringify(data.results)))
+
+//////////////////////////////////////////////////////////////
+let featuredArray = JSON.parse(localStorage.getItem("Featured"))
+console.log(featuredArray)
+const slideShow = document.querySelector(".slideshow-container")
+for(let i = 0; i < featuredArray.length; i++){
+  let slide = document.createElement("div")
+  slide.classList.add("mySlides")
+  slide.classList.add("fade")
+  
+  
+
+  let poster = document.createElement("img")
+  poster.setAttribute(
+    "src",
+    `https://image.tmdb.org/t/p/w500${featuredArray[i].backdrop_path}`
+  );
+  poster.style.width = "100%"
+
+  let slideTitle = document.createElement("h3")
+  slideTitle.textContent = featuredArray[i].title
+  slideTitle.style.textAlign = "center"
+  
+  let slideButton = document.createElement("button")
+  slideButton.textContent = "View"
+  slideButton.value = featuredArray[i].id
+  slideButton.style.width = "100%"
+  slideButton.style.height = "30px"
+  slideButton.addEventListener("click", function(event){
+    specificDetails(event.target.value)
+
+  })
+  slideShow.append(slide)
+  slide.append(poster)
+  slide.append(slideTitle)
+  slide.append(slideButton)
+}
+////////////////////////
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 5000); // Change image every 2 seconds
+}
+
+
+/////////////////////////////////////////////////////////////
+
 searchButton.addEventListener("click", function (event) {
   event.preventDefault();
   let hide = document.getElementsByClassName("main-card");
   for (let i = 0; i < hide.length; i++) {
     hide[i].style.display = "none";
   }
+
+ 
 
   
   fetch(
