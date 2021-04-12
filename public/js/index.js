@@ -125,12 +125,26 @@ searchButton.addEventListener("click", function (event) {
             
           });
           let atext = document.createTextNode(data.results[i].title);
-          let ratingP = document.createElement("p");
-          ratingP.style.cssFloat = "right";
-          let textRating = document.createTextNode(
-            `rating = ${data.results[i].vote_average}`
-          );
 
+
+          let ratingCont = document.createElement("div")
+          ratingCont.style.display = "flex"
+          ratingCont.style.alignItems = "center"
+          
+
+          let ratingP = document.createElement("div");
+          ratingP.style.display = "flex"
+          ratingP.style.justifyContent = "space-between"
+          
+          let icon = document.createElement("icon")
+          icon.classList.add("material-icons")
+          icon.textContent = "star_border"
+          
+          
+          let textRating = document.createTextNode(
+            data.results[i].vote_average
+          );
+          
           let main = document.querySelector(".main");
           main.append(row);
           row.append(col);
@@ -140,8 +154,12 @@ searchButton.addEventListener("click", function (event) {
           card.append(btnCont);
           imgCont.append(im);
           content.append(p);
-          btnCont.append(a);
-          ratingP.append(textRating);
+          // btnCont.append(a);
+          btnCont.append(ratingP)
+          ratingP.append(a)
+          ratingP.append(ratingCont)
+          ratingCont.append(icon)
+          ratingCont.append(textRating)
           btnCont.append(ratingP);
 
           a.append(atext);
