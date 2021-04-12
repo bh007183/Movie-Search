@@ -46,7 +46,8 @@ window.onload = function () {
         posterRow.style.justifyContent = "center";
         let poster = document.createElement("img");
         poster.style.width = "70%"
-        poster.style.aspectRatio = "6:8; "
+        poster.classList.add("poster")
+        
         poster.src = data[i].poster_path;
         //////
         let overviewRow = document.createElement("div");
