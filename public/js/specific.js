@@ -45,6 +45,7 @@ window.onload = function () {
         posterRow.style.display = "flex";
         posterRow.style.justifyContent = "center";
         let poster = document.createElement("img");
+        poster.style.width = "100%"
         poster.src = data[i].poster_path;
         //////
         let overviewRow = document.createElement("div");

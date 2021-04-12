@@ -26,6 +26,7 @@ window.onload = function() {
           Title.style.textAlign = "center";
           let poster = document.querySelector(".poster");
           poster.src = `https://image.tmdb.org/t/p/w500${data.poster_path}`;
+          poster.style.width = "100%"
           let overview = document.querySelector(".overview");
           overview.textContent = data.overview;
           overview.style.textAlign = "center";
