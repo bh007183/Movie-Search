@@ -46,9 +46,11 @@ window.onload = function () {
         posterRow.style.justifyContent = "center";
         let poster = document.createElement("img");
         // poster.style.width = "70%"
-        poster.classList.add("poster")
         
         poster.src = data[i].poster_path;
+
+        let posterContainer = document.createElement("div")
+        posterContainer.classList.add("poster")
         //////
         let overviewRow = document.createElement("div");
         overviewRow.classList.add("row");
@@ -163,7 +165,9 @@ window.onload = function () {
         card.append(titleRow)
         titleRow.append(title)
         card.append(posterRow)
-        posterRow.append(poster)
+        posterRow.append(posterContainer)
+        posterContainer.append(poster)
+
         card.append(overviewRow)
         overviewRow.append(overview)
         card.append(vote_averageRow)
