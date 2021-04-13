@@ -14,7 +14,7 @@ window.onload = function() {
             poster_path: `https://image.tmdb.org/t/p/w500${data.poster_path}`,
             overview: data.overview,
             vote_average: data.vote_average,
-            flatrate: JSON.stringify(data["watch/providers"].results.US.flatrate) || JSON.stringify("No Known Streeming Service"),
+            flatrate: JSON.stringify(data["watch/providers"].results.US.flatrate) || JSON.stringify("No Known Streaming Service"),
             rent: JSON.stringify(data["watch/providers"].results.US.rent) || JSON.stringify("No Known Renting Service")
           }
     
@@ -53,7 +53,7 @@ window.onload = function() {
             let column = document.createElement("div");
             column.classList.add("col");
             column.classList.add("s12");
-            column.textContent = "No Known Streeming"
+            column.textContent = "No Known Streaming"
             column.style.textAlign = "center";
             subscript.append(column);
 

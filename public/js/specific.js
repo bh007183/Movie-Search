@@ -78,7 +78,7 @@ window.onload = function () {
         streemTitlerow.classList.add("row")
         let streemTitle = document.createElement("h4")
         streemTitle.style.textAlign ="center"
-        streemTitle.textContent = "Streeming Locations:"
+        streemTitle.textContent = "Streaming Locations:"
         
         try {
           if(typeof(parsedDataStreem) === "string"){
@@ -86,7 +86,7 @@ window.onload = function () {
             streemSource.classList.add("col");
             streemSource.classList.add("s12");
             streemSource.style.textAlign = "center"
-            streemSource.textContent = "No Known Streeming Service"
+            streemSource.textContent = "No Known Streaming Service"
             flatrateContainer.append(streemSource)
           }else{
             for (let j = 0; j < parsedDataStreem.length; j++) {
@@ -109,7 +109,7 @@ window.onload = function () {
             streemSource.classList.add("col");
             streemSource.classList.add("s12");
             streemSource.style.textAlign = "center"
-            streemSource.textContent = "No Known Streeming Service"
+            streemSource.textContent = "No Known Streaming Service"
             flatrateContainer.append(streemSource)
         }
         //////////
@@ -152,7 +152,7 @@ window.onload = function () {
             rentSource.classList.add("col");
             rentSource.classList.add("s12");
             rentSource.style.textAlign = "center"
-            rentSource.textContent = "No Known Streeming Service"
+            rentSource.textContent = "No Known Streaming Service"
             
             rentContainer.append(rentSource)
         }
