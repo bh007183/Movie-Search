@@ -44,7 +44,7 @@
 
   ## Contributors
 
-  Ben Hopkins
+  Benjamin Hopkins
 
   ## Questions/Contact
 
