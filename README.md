@@ -3,17 +3,15 @@
 
   Deployed Link: https://moviesearch-bjh.herokuapp.com/
 
-  <img src="1.png"></img>
-
-  <img src="2.png"></img>
-
-  
-
   ## Description
 
   A simple full stack app utilizing The Movie Database API. On the home page, a carousel displays trending movies for the day and you may search any movie you would like.
 
   ## Images
+
+  <img src="1.png"></img>
+
+  <img src="2.png"></img>
 
   
   ## Table of Content
