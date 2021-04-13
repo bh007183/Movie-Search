@@ -7,25 +7,23 @@ function specificDetails(id) {
   localStorage.setItem("movieID", id)
   
 }
-// (function(){
-
+featured ()
+function featured (){
 fetch(
   'https://api.themoviedb.org/3/trending/movie/day?api_key=dc7d76692b192b772ecce4d938dfa475',
   {
     method: "GET",
   }
 ).then((res) => res.json())
-.then(data =>
-   {
-   localStorage.setItem("Featured", JSON.stringify(data.results));
-   showSlides()
-})
+ .then(data => localStorage.setItem("Featured", JSON.stringify(data.results)))
+}
 
 
-// })
+
 
 //////////////////////////////////////////////////////////////
 let featuredArray = JSON.parse(localStorage.getItem("Featured"))
+{featuredArray === null ? featured () : console.log("target loaded")}
 console.log(featuredArray)
 const slideShow = document.querySelector(".slideshow-container")
 for(let i = 0; i < featuredArray.length; i++){
@@ -62,13 +60,12 @@ for(let i = 0; i < featuredArray.length; i++){
 }
 ////////////////////////
 
-// var slideIndex = 0;
-// showSlides();
+var slideIndex = 0;
+showSlides();
 
 function showSlides() {
-  var slideIndex = 0;
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
+  let i;
+  const slides = document.getElementsByClassName("mySlides");
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
