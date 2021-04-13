@@ -1,6 +1,8 @@
 
   # MovieSearch
 
+  Deployed Link: https://moviesearch-bjh.herokuapp.com/
+
   <img src="1.png"></img>
 
   <img src="2.png"></img>
@@ -35,6 +37,8 @@
   ## Usage
 
   You may search for any movie you would like by title. Once you hit search/return, you will find the search results and can scroll through them and view any one you would like. Once you view a movie, you will be provided with the streaming or renting locations available. You may also save the movie to a database for future reference. If you go to the saved page, you will see your saved movies and you can delete any movie in your saved page that you would like.
+
+  Deployed Link: https://moviesearch-bjh.herokuapp.com/
   
   ## Technologies
 
