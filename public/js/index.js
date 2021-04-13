@@ -7,6 +7,7 @@ function specificDetails(id) {
   localStorage.setItem("movieID", id)
   
 }
+(function(){
 
 fetch(
   'https://api.themoviedb.org/3/trending/movie/day?api_key=dc7d76692b192b772ecce4d938dfa475',
@@ -15,6 +16,8 @@ fetch(
   }
 ).then((res) => res.json())
 .then(data => localStorage.setItem("Featured", JSON.stringify(data.results)))
+
+})
 
 //////////////////////////////////////////////////////////////
 let featuredArray = JSON.parse(localStorage.getItem("Featured"))
