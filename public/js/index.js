@@ -99,6 +99,10 @@ formSubmit.addEventListener("submit", function (event) {
       inputValue.value = ""
       if (data.results.length === 0) {
       } else {
+        let main = document.querySelector(".main");
+          let scrollto = document.createElement("div")
+        scrollto.setAttribute("id", "scroll")
+        main.append(scrollto)
         for (let i = 0; i < data.results.length; i++) {
           let row = document.createElement("div");
           row.classList.add("row");
@@ -153,8 +157,11 @@ formSubmit.addEventListener("submit", function (event) {
             data.results[i].vote_average
           );
           
-          let main = document.querySelector(".main");
+          
           main.append(row);
+        
+        
+        
           row.append(col);
           col.append(card);
           card.append(imgCont);
@@ -174,6 +181,7 @@ formSubmit.addEventListener("submit", function (event) {
           a.setAttribute("value", data.results[i].id);
         }
       }
+      document.getElementById("scroll").scrollIntoView({behavior: "smooth"});
       
     })
     .catch((err) => console.error(err));
