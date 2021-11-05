@@ -41,6 +41,7 @@ for(let i = 0; i < featuredArray.length; i++){
   poster.style.width = "100%"
 
   let slideTitle = document.createElement("h3")
+  slideTitle.style.marginTop = "5px"
   slideTitle.textContent = featuredArray[i].title
   slideTitle.style.textAlign = "center"
   
