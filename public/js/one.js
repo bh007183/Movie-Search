@@ -90,12 +90,7 @@ window.onload = function() {
               
     
           }
-            
-          
-        });
-}
-
-let saveButton = document.querySelector(".saveMovie")
+          let saveButton = document.querySelector(".saveMovie")
 
 saveButton.addEventListener("click", function(event){
   console.log(savedData)
@@ -107,3 +102,8 @@ saveButton.addEventListener("click", function(event){
   .then(data => window.location.href = "/")
   .catch(err => console.log(err))
 })
+            
+          
+        });
+}
+
